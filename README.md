@@ -1,2 +1,2 @@
 # AML_KNN_Project
-K nearest neighbors project on spotify top 100 songs dataset
+K nearest neighbors project on Happiness of countries/regions
