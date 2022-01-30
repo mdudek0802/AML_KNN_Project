@@ -8,11 +8,26 @@ DATASET = "2015.csv"
 K_NEIGHBORS = 7
 
 fig = plt.figure()
-ax = plt.axes(projection ='3d')
+ax = fig.add_subplot(projection ='3d')
+
+MARKERS = {
+    0 : '$WE$',
+    1 : '$NA$',
+    2 : '$NZ$',
+    3 : '$ME$',
+    4 : '$LA$',
+    5 : '$SEA$',
+    6 : '$CE$',
+    7 : '$EA$',
+    8 : '$SSA$',
+    9 : '$SA$',
+}
+
 
 if __name__ == "__main__":
     unique_regions = []
     region_density = []
+    region_data = []
     data = pd.read_csv(DATASET)
     data = pd.DataFrame(data)
     regions = data["Region"]
@@ -28,14 +43,27 @@ if __name__ == "__main__":
                     "Trust (Government Corruption)", "Generosity"]]
 
     for region in unique_regions:
-        region_density.append(len(sub_data[sub_data["Region"] == region]))
+        temp_region_data = sub_data[sub_data["Region"] == region]
+        region_density.append(len(temp_region_data))
+        region_data.append(temp_region_data)
 
     print(region_density)
     print("Total Density: " + str(sum(region_density)))
+    print(region_data)
     # print(data)
     # print()
 
-    ax.plot3D(sub_data["Happiness Score"], sub_data["Economy (GDP per Capita)"], range(0,sum(region_density)), 'green')
+    i = 0
+    for region in region_data:
+        print(MARKERS.get(i))
+        print(region)
+        # ax.scatter(region["Happiness Score"], region["Economy (GDP per Capita)"], range(0,len(region)), marker=MARKERS.get(i))
+        ax.scatter(region["Happiness Score"], region["Economy (GDP per Capita)"], range(0,len(region)))
+        i+=1
+
+    # ax.plot3D(sub_data["Happiness Score"], sub_data["Economy (GDP per Capita)"], range(0,sum(region_density)), 'green')
+
+    # ax.scatter3D(sub_data["Happiness Score"], sub_data["Economy (GDP per Capita)"], range(0,sum(region_density)), c=range(0,sum(region_density)), cmap='Blues')
     plt.show()
 
 
