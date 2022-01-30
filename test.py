@@ -1,5 +1,7 @@
+from mpl_toolkits import mplot3d
 import pandas as pd
 import numpy as np
+import matplotlib.pyplot as plt
 from sklearn import neighbors
 
 DATASET = "2015.csv"
@@ -29,5 +31,7 @@ if __name__ == "__main__":
     print("Total Density: " + str(sum(region_density)))
     # print(data)
     # print()
-
     
+    fig = plt.figure()
+    ax = plt.axes(projection='3d')
+    plt.show()
