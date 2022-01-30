@@ -7,6 +7,9 @@ from sklearn import neighbors
 DATASET = "2015.csv"
 K_NEIGHBORS = 7
 
+fig = plt.figure()
+ax = plt.axes(projection ='3d')
+
 if __name__ == "__main__":
     unique_regions = []
     region_density = []
@@ -20,7 +23,7 @@ if __name__ == "__main__":
     print(len(unique_regions))
     print(unique_regions)
 
-    sub_data = data[["Region", "Happiness Score", "Economy (GDP per Capita)",
+    sub_data = data[["Country", "Region", "Happiness Score", "Economy (GDP per Capita)",
                     "Family", "Health (Life Expectancy)", "Freedom",
                     "Trust (Government Corruption)", "Generosity"]]
 
@@ -31,7 +34,8 @@ if __name__ == "__main__":
     print("Total Density: " + str(sum(region_density)))
     # print(data)
     # print()
-    
-    fig = plt.figure()
-    ax = plt.axes(projection='3d')
+
+    ax.plot3D(sub_data["Happiness Score"], sub_data["Economy (GDP per Capita)"], range(0,sum(region_density)), 'green')
     plt.show()
+
+
