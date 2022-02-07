@@ -97,8 +97,8 @@ if __name__ == "__main__":
 
     disp = ConfusionMatrixDisplay.from_estimator(
             classifier,
-            regions_train.iloc[:, 1:],
-            regions_train.iloc[:, 0],
+            sub_data.iloc[:, 1:],
+            sub_data.iloc[:, 0],
             # display_labels=unique_regions,
             cmap=plt.cm.Blues,
             normalize=None,
