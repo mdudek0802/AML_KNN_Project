@@ -71,7 +71,8 @@ if __name__ == "__main__":
         region_data.append(temp_region_data)
 
     # Uncomment to show a plot of different attributes
-    # plot_by_three_attributes(region_data, "Happiness Score", "Economy (GDP per Capita)", "Health (Life Expectancy)")
+    plot_by_three_attributes(region_data, "Happiness Score", "Economy (GDP per Capita)", "Health (Life Expectancy)")
+    plot_by_three_attributes(region_data, "Family", "Freedom", "Trust (Government Corruption)")
     # plot_by_two_attributes(region_data, "Happiness Score", "Economy (GDP per Capita)")
 
     i = 0
